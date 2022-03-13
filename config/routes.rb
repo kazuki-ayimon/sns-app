@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments, only: %i[new create]
   end
+
+  resource :profile, only: %i[show edit update]
 end
