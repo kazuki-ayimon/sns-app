@@ -6,7 +6,8 @@ ruby '3.0.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '<= 0.8.28'
+# gem 'mysql2', '>= 0.4.4', '<= 0.8.28'
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -29,6 +30,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'
 gem 'hamlit'
+gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
