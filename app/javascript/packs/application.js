@@ -18,10 +18,10 @@ require("@rails/actiontext")
 import axios from 'axios'
 
 document.addEventListener('turbolinks:load', () => {
-  document.getElementsByClassName('article_title')[0].onclick = () => {
-    axios.get('/')
-      .then((response) => {
-        console.log(response)
-      })
-  }
+  const dataset = document.querySelector('#article-show').dataset;
+  const articleId = dataset.articleId
+  axios.get(`/articles/${articleId}/like`)
+    .then((response) => {
+      console.log(response)
+    })
 });
