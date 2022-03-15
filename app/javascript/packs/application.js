@@ -15,13 +15,10 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 
-import axios from 'axios'
+import $ from 'jquery'
 
-document.addEventListener('turbolinks:load', () => {
-  const dataset = document.querySelector('#article-show').dataset;
-  const articleId = dataset.articleId
-  axios.get(`/articles/${articleId}/like`)
-    .then((response) => {
-      console.log(response)
-    })
-});
+document.addEventListener('DOMContentLoaded', () => {
+  $('.article_title').on('click', () => {
+    window.alert('CLICKED')
+  })
+})
