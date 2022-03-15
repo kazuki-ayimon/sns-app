@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         appendNewComment(comment)
       })
     })
+    .catch((error) => {
+      window.alert('失敗')
+    })
 
   handleCommentForm()
 
