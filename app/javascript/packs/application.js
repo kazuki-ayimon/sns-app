@@ -16,5 +16,7 @@ require("trix")
 require("@rails/actiontext")
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.alert('DOM LOADED')
-})
+  document.getElementsByClassName('article_title')[0].onclick = function() {
+    alert('CLICKED')
+  }
+});
