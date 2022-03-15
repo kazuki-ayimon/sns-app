@@ -30,6 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.comment-text-area').classList.remove('hidden')
   }
 
+  document.getElementsByClassName('add-comment-button')[0].onclick = () => {
+    const content = document.getElementById('comment_content').value
+    if (!content) {
+      window.alert('コメントを入力してください')
+    } else {
+      axios.post(`/articles/${articleId}/comments`, {
+        comment: {content: content}
+      })
+        .then((res) => {
+          const comment = res.data
+          document.querySelector('.comments-container').append(
+            `<div class="article_comment"><p>${comment.content}</p></div>`
+          )
+          document.getElementById('comment_content').value
+        })
+    }
+  }
+
   axios.get(`/articles/${articleId}/like`)
     .then((response) => {
       const hasLiked = response.data.hasLiked
