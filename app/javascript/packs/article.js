@@ -11,6 +11,19 @@ const handleHeartDisplay = (hasLiked) => {
   }
 }
 
+const handleCommentForm = () => {
+  document.getElementsByClassName('show-comment-form')[0].onclick = () => {
+    document.querySelector('.show-comment-form').classList.add('hidden')
+    document.querySelector('.comment-text-area').classList.remove('hidden')
+  }
+}
+
+const appendNewComment = (comment) => {
+  document.querySelector('.comments-container').append(
+    `<div class="article_comment"><p>${comment.content}</p></div>`
+  )
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = document.getElementById('article-show').dataset
   const articleId = dataset.articleId
@@ -19,16 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((response) => {
       const comments = response.data
       comments.forEach((comment) => {
-        document.querySelector('.comments-container').append(
-          `<div class="article_comment"><p>${comment.content}</p></div>`
-        )
+        appendNewComment(comment)
       })
     })
 
-  document.getElementsByClassName('show-comment-form')[0].onclick = () => {
-    document.querySelector('.show-comment-form').classList.add('hidden')
-    document.querySelector('.comment-text-area').classList.remove('hidden')
-  }
+  handleCommentForm()
 
   document.getElementsByClassName('add-comment-button')[0].onclick = () => {
     const content = document.getElementById('comment_content').value
@@ -40,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
         .then((res) => {
           const comment = res.data
-          document.querySelector('.comments-container').append(
-            `<div class="article_comment"><p>${comment.content}</p></div>`
-          )
+          appendNewComment(comment)
           document.getElementById('comment_content').value
         })
     }
