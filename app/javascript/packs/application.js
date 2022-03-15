@@ -17,7 +17,7 @@ require("@rails/actiontext")
 
 import axios from 'axios'
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   document.getElementsByClassName('article_title')[0].onclick = () => {
     axios.get('/')
       .then((response) => {
