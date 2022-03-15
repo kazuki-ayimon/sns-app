@@ -15,8 +15,13 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 
+import axios from 'axios'
+
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementsByClassName('article_title')[0].onclick = function() {
-    alert('CLICKED')
+  document.getElementsByClassName('article_title')[0].onclick = () => {
+    axios.get('/')
+      .then((response) => {
+        console.log(response)
+      })
   }
 });
