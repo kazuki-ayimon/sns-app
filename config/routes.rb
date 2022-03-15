@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :timeline, only: [:show]
 
   resources :articles do
-    resources :comments, only: %i[new create]
+    resources :comments, only: %i[index new create]
     resource :like, only: %i[show create destroy]
   end
 
