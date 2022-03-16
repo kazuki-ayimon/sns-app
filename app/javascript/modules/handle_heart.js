@@ -2,7 +2,7 @@ import axios from 'modules/axios'
 
 const listenInactiveHeartEvent = (articleId) => {
   document.getElementsByClassName('inactive-heart')[0].onclick = () => {
-    axios.post(`/articles/${articleId}/like`)
+    axios.post(`/api/articles/${articleId}/like`)
       .then((response) => {
         if (response.data.status === 'ok') {
           document.querySelector('.active-heart').classList.remove('hidden')
@@ -18,7 +18,7 @@ const listenInactiveHeartEvent = (articleId) => {
 
 const listenActiveHeartEvent = (articleId) => {
   document.getElementsByClassName('active-heart')[0].onclick = () => {
-    axios.delete(`/articles/${articleId}/like`)
+    axios.delete(`/api/articles/${articleId}/like`)
       .then((response) => {
         if (response.data.status === 'ok') {
           document.querySelector('.active-heart').classList.add('hidden')
